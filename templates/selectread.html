@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Read Your Journal Entries
+{% endblock %}
+
+{% block main %}
+
+{% for item in contentselected %}
+<h3>Journal Entry</h3><h4>{{ item["time2"] }}</h4>
+<!-- If/Else Loop to hide score statement if they didn't enter one at time of writing a post -->
+<!-- https://stackoverflow.com/questions/3842690/in-jinja2-how-do-you-test-if-a-variable-is-undefined -->
+
+{% if item["score"] != "n/a" %}
+    <!-- https://getbootstrap.com/docs/4.0/utilities/text/ -->
+    <h6 class="font-italic">(You were feeling a {{ item["score"] }} when you wrote this)</h6>
+{% endif %}
+
+<!-- https://getbootstrap.com/docs/4.0/content/tables/ -->
+<table class="table">
+  <thead>
+    <tr></tr>
+  </thead>
+  <tbody>
+    <!-- https://stackoverflow.com/questions/19614027/jinja2-template-variable-if-none-object-set-a-default-value -->
+    {% if item["content1"] != '' %}
+      <tr><td><h5>Thoughts: </h5>{{ item["content1"] }}</tr></td>
+    {% endif %}
+    {% if item["content2"] != '' %}
+      <tr><td><h5>Feelings: </h5>{{ item["content2"] }}</tr></td>
+    {% endif %}
+    {% if item["content3"] != '' %}
+      <tr><td><h5>Cognitive Distortions: </h5>{{ item["content3"] }}</tr></td>
+    {% endif %}
+    {% if item["content4"] != '' %}
+      <tr><td><h5>Alternative Response: </h5>{{ item["content4"] }}</tr></td>
+    {% endif %}
+    {% if item["content5"] != '' %}
+      <tr><td><h5>Positive Moment: </h5>{{ item["content5"] }}</tr></td>
+    {% endif %}
+    </tbody>
+</table>
+{% endfor %}
+<br>
+<button class="btn btn-secondary " onclick="window.location.href='/read'">Select a different journal entry</button>
+{% endblock %}

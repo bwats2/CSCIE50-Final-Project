@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Get Help
+{% endblock %}
+
+{% block main %}
+    <h3>Please know that you are not alone!</h3>
+    <!-- This block will only display if user not logged in -->
+    <!-- https://stackoverflow.com/questions/16562577/how-can-i-make-a-button-redirect-my-page-to-another-page -->
+    {% if not session.user_id %}
+        <button class="btn btn-danger" onclick="window.location='/login'">Do you need to log in?</button>
+        <br>
+        <br>
+    {% endif %}
+    <!-- This if block below will only display content when user is logged in -->
+    {% if session.user_id %}
+        <br>
+        {% for item in sc %}
+            <!-- https://www.tutorialspoint.com/html/html_email_links.htm -->
+            <!-- https://www.w3schools.com/tags/ref_urlencode.asp -->
+            <!-- We accomodate if they decided not to register a name during registration (less barriers is better!) -->
+            <a class="h4" style="color:red; font-weight:bold" href= "mailto:{{ item["scemail"] }}?subject=I%20Could%20Use%20Your%20Help&body=Hi%20{{ item["scname"] }}-%20I%20could%20really%20use%20your%20help.%20Could%20you%20contact%20me%20please?">
+            CLICK HERE to Contact {{ item["scname"] }} via email: {{ item["scemail"] }}
+            </a>
+            <!-- <button class="btn btn-danger" onclick="window.location='mailto:{{ item["scemail"] }}?subject=I%20Could%20Use%20Your%20Help&body=Hi%20{{ item["scname"] }}-%20I%20could%20really%20use%20your%20help.%20Could%20you%20contact%20me%20please?'">CLICK HERE to Contact {{ item["scname"] }} via email: <br>{{ item["scemail"] }}</button> -->
+        {% endfor %}
+        <br>
+        <br>
+        <a href="/update" style="color:grey">(Do you need to update your Support Contact?)</a>
+        <br>
+        <br>
+        <br>
+    {% endif %}
+    <!-- https://getbootstrap.com/docs/4.0/content/reboot/#lists -->
+    <!-- If user logged in, then extra word to emphasize additional -->
+    <p class="font-weight-bold">Here is a list of {% if session.user_id %}additional {% endif %}resources which might help you:</p>
+    <!-- https://getbootstrap.com/docs/4.0/components/list-group/ -->
+    <ul class="list-group">
+        <!-- https://developers.google.com/web/fundamentals/native-hardware/click-to-call/ -->
+        <!-- Since this page is mobile-friendly, Apple/Android recognizes tel: links -->
+        <li class="list-group-item"><a href="tel:+18002738255">800-273-8255</a> – Suicide Prevention Hotline</li>
+        <li class="list-group-item"><a href="tel:+18006624357">800-662-HELP (4357)</a> – SAMHSA’s National Helpline</li>
+    </ul>
+{% endblock %}

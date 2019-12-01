@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    DELETE
+{% endblock %}
+
+{% block main %}
+    <h3>Delete Your Data</h3>
+    <br>
+    <form action="/delete" method="post">
+        <p>Do you wish to delete your account and all your data? <br>THIS CANNOT BE UNDONE.</p>
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-secondary active">
+                <input type="radio" name="delete" id="option1" autocomplete="off" value="no" checked> No
+            </label>
+            <br>
+            <label class="btn btn-danger">
+                <input type="radio" name="delete" id="option2" autocomplete="off" value="yes"> Yes
+            </label>
+        </div>
+        <br>
+        <br>
+        <br>
+        <button class="btn btn-secondary" type="submit">Delete Your Data</button>
+    </form>
+{% endblock %}

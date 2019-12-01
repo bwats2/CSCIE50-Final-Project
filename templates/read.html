@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Read Your Journal Entries
+{% endblock %}
+
+{% block main %}
+    <!-- https://getbootstrap.com/docs/4.0/content/reboot/#lists -->
+    <h3>Read a journal entry:</h3>
+    <br>
+    <form action="/read" method="post">
+        <!--https://getbootstrap.com/docs/4.0/components/forms/ -->
+        <!-- Developer Tools console log shows that form text content is being submitted -->
+        <div>
+            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="time">
+                <!-- <option selected value="">Select a journal entry to view</option> -->
+                {% for dict_item in dateoptions %}
+                    {% for key, value in dict_item.items() %}
+                        <option value="{{ value }}">{{ value }}</option>
+                    {% endfor %}
+                {% endfor %}
+            </select>
+        </div>
+        <br>
+        <button class="btn btn-secondary " type="submit">Read this journal entry</button>
+    </form>
+{% endblock %}

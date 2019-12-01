@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    About
+{% endblock %}
+
+{% block main %}
+    <h3>About</h3>
+    <br>
+    {% if session.user_id %}
+        <h4>Looking to update your Password?</h4>
+        <a href="/updatepassword">Click here to update your Password.</a>
+        <br>
+        <br>
+        <h4>Need to update your Support Contact?</h4>
+        <a href="/update">Click here to update your Support Contact information.</a>
+        <br>
+        <br>
+    {% endif %}
+    <h4>What is this site?</h4>
+    <p>This site is a lightweight web app designed to help users who might struggle with mental health and wellbeing.</p>
+    <br>
+    <h4>How does this site attempt to help?</h4>
+    <p>Our methodology is fundamentally based in the Cognitive Distortions Theory of mental health. Most crisis is caused by a cognitive distortion, and being able to rationally think through distortions can relieve the burden they place on the indvidual.</p>
+    <br>
+    <h4>What is a Cognitive Distortion?</h4>
+    <p><a href="https://en.wikipedia.org/wiki/Cognitive_distortion">Please click here to learn more about the different types of Cognitive Distortions.</a></p>
+    <br>
+    <h4>What is a 'Support Contact'?</h4>
+    <p>A Support Contact - created during the registration process - is a contact who you can reach out to in times of need. This could be a family member, friend, therapist, etc. Research has shown that it can be hard to initiate a request for help from your support network, so we try to reduce the perceived/real barriers to asking for support.</p>
+    <br>
+    {% if session.user_id %}
+        <h4 style="color:red; font-weight:light">Do you want to delete your data?</h4>
+        <button class="btn btn-danger" onclick="window.location='/delete'">Click here to delete all your data</button>
+        <br>
+    {% endif %}
+{% endblock %}

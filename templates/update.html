@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Update
+{% endblock %}
+
+{% block main %}
+    <h3>Update Your Support Contact</h3>
+    <br>
+    <form action="/update" method="post">
+        <p>Your Support Contact is anyone that you can turn to for help.</p>
+        <p>If you press submit, you will overwrite previous Support Contact information.</p>
+        <div class="form-group">
+            <input class="form-control" name="scname" placeholder="Support Contact's Name" type="text">
+        </div>
+        <div class="form-group">
+            <input type="email" class="form-control" name="scemail" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Support Contact's Email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share this email with anyone else.</small>
+          </div>
+        <button class="btn btn-secondary" type="submit">Update Information</button>
+    </form>
+   {% endblock %}

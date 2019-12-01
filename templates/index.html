@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Write a Journal Entry
+{% endblock %}
+
+{% block main %}
+
+<!-- https://getbootstrap.com/docs/4.0/content/reboot/#lists -->
+<h3>Write a Journal Entry:</h3>
+<br>
+<form action="/write" method="post">
+    <!-- https://getbootstrap.com/docs/4.0/components/forms/ -->
+    <!-- Developer Tools console log shows that form text content is being submitted -->
+    <!-- https://getbootstrap.com/docs/4.0/components/input-group/ -->
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Thoughts</span>
+        </div>
+        <textarea class="form-control" aria-label="With textarea" name="content1" id="content1" placeholder="Write down your thoughts."></textarea>
+    </div>
+    <br>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Feelings</span>
+        </div>
+        <textarea class="form-control" aria-label="With textarea" name="content2" id="content2" placeholder="What emotions do you feel?"></textarea>
+    </div>
+    <br>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Cognitive <br>Distortions</span>
+        </div>
+        <textarea class="form-control" aria-label="With textarea" name="content3" id="content3" placeholder="Is there a cognitive distortion in your thought? Describe it."></textarea>
+    </div>
+    <br>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Alternative <br>Response</span>
+        </div>
+        <textarea class="form-control" aria-label="With textarea" name="content4" id="content4" placeholder="Think of a more rational response to your distortion."></textarea>
+    </div>
+    <br>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Positive <br> Moment</span>
+        </div>
+        <textarea class="form-control" aria-label="With textarea" name="content5" id="content5" placeholder="Write down one positive thing that happened today."></textarea>
+    </div>
+    <br>
+    <div>
+        <label for="inlineFormCustomSelect"><h5>Today, I feel:</h5></label>
+            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="score">
+                <option selected value="n/a">Choose how you feel...(OPTIONAL)</option>
+                <option value="1">1 (Not great)</option>
+                <option value="2">2</option>
+                <option value="3">3 (Okay)</option>
+                <option value="4">4</option>
+                <option value="5">5 (Wonderful)</option>
+            </select>
+    </div>
+    <br>
+    <button class="btn btn-secondary " type="submit">Submit your journal entry</button>
+</form>
+
+{% endblock %}
